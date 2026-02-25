@@ -1,8 +1,6 @@
-
 # signup - testign 
 POST http://localhost:3001/api/auth/signUp HTTP/1.1
 content-type: application/json
-
 
 {
   "fullName": "user1",
@@ -10,13 +8,45 @@ content-type: application/json
   "email": "user1@gmail.com"
 }
 
+
 ### 
 #login
 POST http://localhost:3001/api/auth/login HTTP/1.1
 content-type: application/json
 
-
 {
   "password": "user1",
-  "email": "user@gmail.com"
+  "email": "user1@gmail.com"
+}
+
+
+### 
+#create habbit
+POST http://localhost:3001/api/habits HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OWU2MzdiMzc5MGQxMjlmMzk3NTAwZiIsImVtYWlsIjoidXNlcjFAZ21haWwuY29tIiwiaWF0IjoxNzcxOTkzOTEyLCJleHAiOjE3NzIwODAzMTJ9.g-4q6Dun_FWQxeBwHlRjDgiRiSTQp9gWk3MH6srbLf4
+
+{
+  "title": "sample Title 2"
+}
+
+### 
+#create habbit
+GET http://localhost:3001/api/habits HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OWU2MzdiMzc5MGQxMjlmMzk3NTAwZiIsImVtYWlsIjoidXNlcjFAZ21haWwuY29tIiwiaWF0IjoxNzcxOTkzOTEyLCJleHAiOjE3NzIwODAzMTJ9.g-4q6Dun_FWQxeBwHlRjDgiRiSTQp9gWk3MH6srbLf4
+
+{
+  
+}
+
+### 
+#create habbit
+PUT http://localhost:3001/api/habits/699e7d5006e80e51cd882431 HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OWU2MzdiMzc5MGQxMjlmMzk3NTAwZiIsImVtYWlsIjoidXNlcjFAZ21haWwuY29tIiwiaWF0IjoxNzcxOTkzOTEyLCJleHAiOjE3NzIwODAzMTJ9.g-4q6Dun_FWQxeBwHlRjDgiRiSTQp9gWk3MH6srbLf4
+
+{
+  "title": "Updated title",
+  "description": "description"
 }

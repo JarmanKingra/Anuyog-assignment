@@ -20,4 +20,5 @@ const habitSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.model("Habit", habitSchema);
+const Habit =  mongoose.model("Habit", habitSchema);
+export default Habit;
