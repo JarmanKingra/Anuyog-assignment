@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import cors from 'cors';
 import userRoutes from "./Routes/userRoutes.js"
 import habitRoutes from "./Routes/habitRoutes.js"
+import habitLogRoutes from "./Routes/habitlogRoutes.js"
 
 
 
@@ -19,8 +20,9 @@ app.use(express.json({limit: "40kb"}));
 app.use(express.urlencoded({limit: "40kb", extended: true}))
 app.use("/api/auth",userRoutes); 
 app.use("/api/habits", habitRoutes);
+app.use("/api/habitLogs", habitLogRoutes);
 
-
+ 
 app.get("/", (req, res) => {
     return res.json({"hello" : "World"})
 })
