@@ -1,0 +1,22 @@
+
+# signup - testign 
+POST http://localhost:3001/api/auth/signUp HTTP/1.1
+content-type: application/json
+
+
+{
+  "fullName": "user1",
+  "password": "user1",
+  "email": "user1@gmail.com"
+}
+
+### 
+#login
+POST http://localhost:3001/api/auth/login HTTP/1.1
+content-type: application/json
+
+
+{
+  "password": "user1",
+  "email": "user@gmail.com"
+}
