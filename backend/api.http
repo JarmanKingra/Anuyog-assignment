@@ -41,12 +41,30 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OWU2MzdiM
 }
 
 ### 
-#create habbit
+#update habbit
 PUT http://localhost:3001/api/habits/699e7d5006e80e51cd882431 HTTP/1.1
 content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OWU2MzdiMzc5MGQxMjlmMzk3NTAwZiIsImVtYWlsIjoidXNlcjFAZ21haWwuY29tIiwiaWF0IjoxNzcxOTkzOTEyLCJleHAiOjE3NzIwODAzMTJ9.g-4q6Dun_FWQxeBwHlRjDgiRiSTQp9gWk3MH6srbLf4
 
 {
-  "title": "Updated title",
-  "description": "description"
+  "habitId": "699e7d5006e80e51cd882431",
 }
+
+### 
+#create habbitlog
+POST http://localhost:3001/api/habitLogs/699e7c3aa9ef76ab420973e7 HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OWU2MzdiMzc5MGQxMjlmMzk3NTAwZiIsImVtYWlsIjoidXNlcjFAZ21haWwuY29tIiwiaWF0IjoxNzcxOTkzOTEyLCJleHAiOjE3NzIwODAzMTJ9.g-4q6Dun_FWQxeBwHlRjDgiRiSTQp9gWk3MH6srbLf4
+
+### 
+#get habbitlog
+GET http://localhost:3001/api/habitLogs/699e7c3aa9ef76ab420973e7 HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OWU2MzdiMzc5MGQxMjlmMzk3NTAwZiIsImVtYWlsIjoidXNlcjFAZ21haWwuY29tIiwiaWF0IjoxNzcxOTkzOTEyLCJleHAiOjE3NzIwODAzMTJ9.g-4q6Dun_FWQxeBwHlRjDgiRiSTQp9gWk3MH6srbLf4
+
+
+### 
+#get habbitlogSummary
+GET http://localhost:3001/api/habitLogs/getHabitSummary/699e7c3aa9ef76ab420973e7 HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OWU2MzdiMzc5MGQxMjlmMzk3NTAwZiIsImVtYWlsIjoidXNlcjFAZ21haWwuY29tIiwiaWF0IjoxNzcxOTkzOTEyLCJleHAiOjE3NzIwODAzMTJ9.g-4q6Dun_FWQxeBwHlRjDgiRiSTQp9gWk3MH6srbLf4
