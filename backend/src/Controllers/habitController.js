@@ -53,17 +53,13 @@ export const getHabits = async (req, res) => {
     const habits = await Habit.find({ user: req.user._id });
 
     const today = formatLocalDate(new Date());
-
-    // Get all habit IDs
     const habitIds = habits.map(h => h._id);
 
-    // Get all logs for today in ONE query
     const todayLogs = await HabitLog.find({
       habit: { $in: habitIds },
       date: today,
     });
 
-    // Convert to simple array of completed habit IDs
     const completedIds = todayLogs.map(log => log.habit.toString());
 
     const result = habits.map(habit => ({

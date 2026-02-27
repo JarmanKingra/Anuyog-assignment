@@ -74,7 +74,6 @@ export default function HabitDetailPage() {
           </button>
         </div>
 
-        {/* Stats Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {/* Current Streak */}
           <div className="bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-700">
@@ -143,7 +142,7 @@ export default function HabitDetailPage() {
             <Doughnut data={data} options={options} />
           </div>
 
-          {/* Custom Legend  */}
+          {/* Stats - text  */}
           <div className="flex justify-center gap-6 mt-6 text-sm">
             <div className="flex items-center gap-2">
               <div className="w-4 h-4 rounded-full bg-green-500"></div>
@@ -157,13 +156,6 @@ export default function HabitDetailPage() {
           </div>
         </div>
       </div>
-
-      {/* <div className="absolute inset-0 flex items-center justify-center flex-col">
-        <span className="text-2xl font-bold text-white">
-          {habitSummary.completionRate}%
-        </span>
-        <span className="text-xs text-gray-400">Consistency</span>
-      </div> */}
 
       {deleteHabit && (
         <DeleteHabitModal

@@ -20,7 +20,6 @@ export default function Navbar() {
     <nav className="w-full bg-blue-950  px-6 py-4 sticky top-0 z-50 backdrop-blur-lg">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
 
-        {/* Logo */}
         <h1
           onClick={() => router.push("/dashboard")}
           className="text-xl font-bold bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent cursor-pointer"
@@ -28,7 +27,7 @@ export default function Navbar() {
           Consistency Tracker
         </h1>
 
-        {/* Desktop Menu */}
+        {/* For Laptiop Sized */}
         <div className="hidden md:flex gap-8 text-sm font-medium">
           {navItems.map((item) => (
             <button
@@ -54,7 +53,7 @@ export default function Navbar() {
             </button>
         </div>
 
-        {/* Mobile Hamburger */}
+        {/* Mobile Hamburger icon */}
         <button
           className="md:hidden text-gray-300 cursor-pointer"
           onClick={() => setOpen(!open)}
@@ -63,7 +62,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* For Mobile Menu */}
       {open && (
         <div className="md:hidden mt-4 flex flex-col gap-4 text-sm font-medium">
           {navItems.map((item) => (

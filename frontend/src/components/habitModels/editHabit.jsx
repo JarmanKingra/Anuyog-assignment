@@ -37,7 +37,7 @@ export default function EditHabitModal({ habit, onClose }) {
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
       onClick={onClose}
     >
-      {/* Modal Card */}
+      
       <div
         className="bg-gray-900 text-white w-full max-w-md rounded-2xl p-6 shadow-xl border border-gray-700 relative"
         onClick={(e) => {
@@ -45,7 +45,6 @@ export default function EditHabitModal({ habit, onClose }) {
           e.stopPropagation();
         }}
       >
-        {/* Close Button */}
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-gray-400 hover:text-white cursor-pointer"
@@ -56,7 +55,6 @@ export default function EditHabitModal({ habit, onClose }) {
         <h2 className="text-xl font-bold mb-6">Edit Habit</h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Title */}
           <div>
             <label className="block text-sm mb-1 text-gray-400">Title</label>
             <input
@@ -67,7 +65,6 @@ export default function EditHabitModal({ habit, onClose }) {
             />
           </div>
 
-          {/* Description */}
           <div>
             <label className="block text-sm mb-1 text-gray-400">
               Description
@@ -80,7 +77,6 @@ export default function EditHabitModal({ habit, onClose }) {
             />
           </div>
 
-          {/* Buttons */}
           <div className="flex justify-end gap-3 pt-4">
             <button
               type="button"
