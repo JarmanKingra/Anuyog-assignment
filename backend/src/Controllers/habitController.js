@@ -1,5 +1,6 @@
 import Habit from "../Models/habitModel.js";
 import HabitLog from "../Models/habitLog.js";
+import { formatLocalDate } from "../Utils/dateFormatter.js";
 
 export const createHabit = async (req, res) => {
   try {
@@ -19,13 +20,61 @@ export const createHabit = async (req, res) => {
   }
 };
 
+// export const getHabits = async (req, res) => {
+//   try {
+//     const habits = await Habit.find({ user: req.user._id });
+
+//     const today = formatLocalDate(new Date());
+
+//     const result = [];
+
+//     for (let habit of habits) {
+//       const log = await HabitLog.findOne({
+//         habit: habit._id,
+//         date: today,
+//       });
+
+//       result.push({
+//         ...habit.toObject(),
+//         isCompletedToday: !!log,
+//       });
+//     }
+
+//     return res.json(result);
+
+//   } catch (error) {
+//     console.log(error);
+//     return res.status(500).json({ message: "Server error" });
+//   }
+// };
+
 export const getHabits = async (req, res) => {
   try {
-    const habits = await Habit.find({ user: req.user._id }).sort({
-      createdAt: -1,
+    const habits = await Habit.find({ user: req.user._id });
+
+    const today = formatLocalDate(new Date());
+
+    // Get all habit IDs
+    const habitIds = habits.map(h => h._id);
+
+    // Get all logs for today in ONE query
+    const todayLogs = await HabitLog.find({
+      habit: { $in: habitIds },
+      date: today,
     });
 
-    return res.status(200).json(habits);
+    // Convert to simple array of completed habit IDs
+    const completedIds = todayLogs.map(log => log.habit.toString());
+
+    const result = habits.map(habit => ({
+      ...habit.toObject(),
+      isCompletedToday: completedIds.includes(
+        habit._id.toString()
+      ),
+    }));
+
+    return res.json(result);
+
   } catch (error) {
     return res.status(500).json({ message: "Server error" });
   }

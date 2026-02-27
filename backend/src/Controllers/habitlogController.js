@@ -139,6 +139,7 @@ export const getHabitSummary = async (req, res) => {
       maxStreak,
       completionRate,
       totalCompletions: logs.length,
+      totalDays
     });
   } catch (err) {
     return res.status(500).json({ message: "Server error" });

@@ -1,8 +1,18 @@
 "use client";
+import { useAuthStore } from "@/store/authStore";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Home() {
   const router = useRouter();
+  const token = useAuthStore((s) => s.token);
+  const isLoggedIn = useAuthStore((s) => s.isLoggedIn);
+
+  useEffect(() => {
+    if (token && isLoggedIn) {
+      router.replace("/dashboard");
+    }
+  }, [token, isLoggedIn]);
 
  return (
   <main className="min-h-screen text-[var(--text-main)] bg-[var(--bg-main)] [background:radial-gradient(circle_at_top_left,rgba(99,102,241,0.15),transparent_40%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.15),transparent_40%),var(--bg-main)]">
