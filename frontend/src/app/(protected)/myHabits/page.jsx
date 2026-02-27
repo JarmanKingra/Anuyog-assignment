@@ -106,6 +106,11 @@ export default function MyHabits() {
                 View
               </button>
             </div>
+            <div className="flex justify-between items-center">
+              <p className="text-sm text-gray-500 mt-3 line-clamp-2">
+                   Started on: {new Date(habit.createdAt).toLocaleDateString("en-CA")}
+                </p>
+            </div>
           </div>
         ))}
       </div>
