@@ -7,8 +7,8 @@ The app allows users to create habits, track daily completions, and analyze cons
 
 ## 🚀 Live Demo
 
-🔗 Live Link: [Add your deployed frontend URL here]  
-🔗 Backend API: [Add backend URL if deployed separately]
+🔗 Live Link: https://anuyog-assignment.vercel.app/
+🔗 Backend API: https://anuyog-assignment-backed.onrender.com/
 
 ---
 
