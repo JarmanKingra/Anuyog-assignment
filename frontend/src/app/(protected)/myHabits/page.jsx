@@ -3,11 +3,13 @@ import CreateHabitModal from "@/components/habitModels/createHabitModel";
 import { useEffect, useState } from "react";
 import { useHabitStore } from "@/store/habitStore";
 import { useRouter } from "next/navigation";
+import EditHabitModal from "@/components/habitModels/editHabit";
 
 export default function MyHabits() {
   const { habits } = useHabitStore();
   const [showModal, setShowModal] = useState(false);
   const { getMyHabits, markHabitLogComplete } = useHabitStore();
+  const [editHabit, setEditHabit] = useState(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -68,17 +70,28 @@ export default function MyHabits() {
             {/* Top Section */}
             <div>
               <div className="flex justify-between items-start">
-                <h3 className="text-lg font-semibold text-gray-800">
+                <h3 className="text-lg font-semibold text-gray-800 capitalize">
                   {habit.title}
                 </h3>
-
-                <span className="bg-orange-100 text-orange-600 text-xs px-3 py-1 rounded-full font-medium">
-                  🔥 {habit.currentStreak}d
-                </span>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => setEditHabit(habit)}
+                    className="text-gray-400 hover:text-indigo-600 text-sm cursor-pointer"
+                  >
+                    ✏️
+                  </button>
+                </div>
               </div>
+              {habit.description ? (
+                <p className="text-sm text-gray-500 mt-3 line-clamp-2">
+                  Description: {habit.description}
+                </p>
+              ) : (<p className="text-sm text-gray-500 mt-3 line-clamp-2 italic">
+                  No Description available
+                </p>)}
 
               <p className="text-xs text-gray-400 mt-2">
-                Max Streak: {habit.maxStreak} days
+                {/* Max Streak: {habit.maxStreak} days */}
               </p>
             </div>
 
@@ -87,15 +100,9 @@ export default function MyHabits() {
 
             {/* Action Section */}
             <div className="flex justify-between items-center">
-              {/* <button
-          onClick={() => handleMarkComplete(habit._id)}
-          className="text-sm px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-500 transition cursor-pointer"
-        >
-          Mark Complete
-        </button> */}
-
               <button
-                onClick={() => {handleMarkComplete(habit._id)
+                onClick={() => {
+                  handleMarkComplete(habit._id);
                 }}
                 disabled={habit.isCompletedToday}
                 className={`text-sm px-4 py-2 rounded-lg transition cursor-pointer
@@ -119,6 +126,9 @@ export default function MyHabits() {
         ))}
       </div>
       {showModal && <CreateHabitModal onClose={() => setShowModal(false)} />}
+      {editHabit && (
+        <EditHabitModal habit={editHabit} onClose={() => setEditHabit(null)} />
+      )}
     </div>
   );
 }

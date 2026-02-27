@@ -61,6 +61,45 @@ export const useHabitStore = create((set) => ({
     }
   },
 
+  updateHabit: async (id, title, description) => {
+  try {
+    const res = await clientServer.put(`/api/habits/${id}`, {
+      title,
+      description,
+    });
+
+    set((state) => ({
+      habits: state.habits.map((h) =>
+        h._id === id ? res.data : h
+      ),
+    }));
+
+    notify("Habit updated", "success");
+    return { success: true };
+
+  } catch (err) {
+    notify("Failed to update habit", "error");
+    return { success: false };
+  }
+},
+
+deleteHabit: async (id) => {
+  try {
+    await clientServer.delete(`/api/habits/${id}`);
+
+    set((state) => ({
+      habits: state.habits.filter((h) => h._id !== id),
+    }));
+
+    notify("Habit deleted", "success");
+    return { success: true };
+
+  } catch (err) {
+    notify("Failed to delete habit", "error");
+    return { success: false };
+  }
+},
+
   markHabitLogComplete: async (habitId) => {
     try {
       set({ loading: true, error: null });

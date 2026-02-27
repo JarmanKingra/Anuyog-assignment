@@ -1,12 +1,14 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { useHabitStore } from "@/store/habitStore";
+import DeleteHabitModal from "@/components/habitModels/deleteHabit";
 
 export default function HabitDetailPage() {
   const { habitId } = useParams();
   const { habitSummary, loading, getHabitSummary } = useHabitStore();
+  const [deleteHabit, setDeleteHabit] = useState(null);
 
   useEffect(() => {
     if (habitId) {
@@ -27,7 +29,15 @@ export default function HabitDetailPage() {
   return (
     <div className="min-h-screen bg-gray-900 p-6 text-white">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold mb-8">Habit Analytics</h1>
+        <div className="flex justify-between">
+          <h1 className="text-3xl font-bold mb-8">Habit Analytics</h1>
+          <button
+            onClick={() => setDeleteHabit(habitId)}
+            className="text-gray-400 hover:text-red-600 text-3xl cursor-pointer"
+          >
+            🗑
+          </button>
+        </div>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -84,6 +94,12 @@ export default function HabitDetailPage() {
           </div>
         </div>
       </div>
+      {deleteHabit && (
+  <DeleteHabitModal
+    habitId={deleteHabit}
+    onClose={() => setDeleteHabit(null)}
+  />
+)}
     </div>
   );
 }

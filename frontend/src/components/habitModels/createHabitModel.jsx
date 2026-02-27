@@ -29,7 +29,9 @@ export default function CreateHabitModal({ onClose }) {
     >
       <div
         className="bg-[#111] text-white w-full max-w-md rounded-xl p-8 shadow-2xl"
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
       >
         <h2 className="text-2xl font-bold mb-6">Create Habit</h2>
 
@@ -56,14 +58,14 @@ export default function CreateHabitModal({ onClose }) {
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition"
+              className="px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition cursor-pointer"
             >
               Cancel
             </button>
 
             <button
               type="submit"
-              className="px-5 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 transition"
+              className="px-5 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 transition cursor-pointer"
             >
               {loading ? "Creating..." : "Create Habit"}
             </button>
