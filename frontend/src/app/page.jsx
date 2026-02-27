@@ -1,13 +1,22 @@
 "use client";
+import { useAuthStore } from "@/store/authStore";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Home() {
   const router = useRouter();
+  const token = useAuthStore((s) => s.token);
+  const isLoggedIn = useAuthStore((s) => s.isLoggedIn);
+
+  useEffect(() => {
+    if (token && isLoggedIn) {
+      router.replace("/dashboard");
+    }
+  }, [token, isLoggedIn]);
 
  return (
   <main className="min-h-screen text-[var(--text-main)] bg-[var(--bg-main)] [background:radial-gradient(circle_at_top_left,rgba(99,102,241,0.15),transparent_40%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.15),transparent_40%),var(--bg-main)]">
 
-    {/* Navbar */}
     <nav className="flex justify-between items-center px-12 py-6">
       <div className="text-2xl font-bold">HabitFlow</div>
 
@@ -21,7 +30,6 @@ export default function Home() {
       </div>
     </nav>
 
-    {/* Hero */}
     <section className="text-center mt-24 px-4">
       <h1 className="text-6xl font-bold leading-tight">
         Build Better Habits <br />
